@@ -9,8 +9,11 @@ def get_environment(env_name: str) -> Environment:
     env: Environment
 
     if env_name == 'cube3':
-        from environments.cube3 import Cube3
-        env = Cube3()
+        from environments.cube3 import CubeN
+        env = CubeN(n=3)
+    elif env_name == 'cube2':
+        from environments.cube3 import CubeN
+        env = CubeN(n=2)
     elif puzzle_n_regex is not None:
         from environments.n_puzzle import NPuzzle
         puzzle_dim: int = int(math.sqrt(int(puzzle_n_regex.group(1)) + 1))
