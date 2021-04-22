@@ -4,3 +4,4 @@ cpp/parallel_weighted_astar
 # Python
 __pycache__/
 *.pyc
+.venv/
