@@ -293,10 +293,8 @@ def start_heur_fn_runners(num_procs: int, nnet_dir: str, device, on_gpu: bool, e
         heuristic_fn_output_queues.append(heuristic_fn_output_queue)
 
     # initialize heuristic procs
-    if ('CUDA_VISIBLE_DEVICES' in os.environ) and (len(os.environ['CUDA_VISIBLE_DEVICES']) > 0):
-        gpu_nums = [int(x) for x in os.environ['CUDA_VISIBLE_DEVICES'].split(",")]
-    else:
-        gpu_nums = [None]
+    gpu_nums = os.environ.get('CUDA_VISIBLE_DEVICES')
+    gpu_nums = (int(n) for n in gpu_nums.split(',')) if gpu_nums else (-1,)
 
     heur_procs: List[ctx.Process] = []
     for gpu_num in gpu_nums:
