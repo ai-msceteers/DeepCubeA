@@ -35,7 +35,7 @@ def main():
     """Plot graphs."""
     # Set up matplotlib.
     plt.rcParams.update({'figure.constrained_layout.use': True,
-                         'font.size': 16,
+                         'font.size': 18,
                          'text.usetex': True})
 
     fig, axs = plt.subplots(len(sizes), len(attrs), sharex=True)
@@ -50,10 +50,12 @@ def main():
             color = val['color']
             means = stats[attr]['means']
             stds = stats[attr]['stds']
-            ax.set_yscale(val['scale'])
             ax.plot(weights, means, c=color)
             ax.fill_between(weights, np.subtract(means, stds),
                             np.add(means, stds), alpha=0.1, color=color)
+            ax.set_yscale(val['scale'])
+            if attr == 'time':
+                ax.set_ylim(bottom=1)
     fig.supxlabel('Weight')
     plt.show()
     plt.close()
