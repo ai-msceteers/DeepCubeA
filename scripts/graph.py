@@ -5,7 +5,7 @@ import numpy as np
 import pickle
 
 sizes = (2, 3)                             # Cube sizes.
-weights = tuple(n / 10 for n in range(6))  # BWAS weights.
+weights = tuple(n / 10 for n in range(7))  # BWAS weights.
 
 # Solution attributes and their graph properties.
 attrs = {
